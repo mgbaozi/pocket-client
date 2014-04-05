@@ -5,7 +5,7 @@ model:
 	$(MAKE) -C model
 
 main: pocket-client.cc
-	g++ pocket-client.cc -o ../build/debug/pocket-client
+	g++ pocket-client.cc $(CXXFLAGS) -o ../build/debug/pocket-client
 
 run: all
 	../build/debug/pocket-client

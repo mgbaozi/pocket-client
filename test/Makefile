@@ -3,10 +3,10 @@ tests = config_test config_change_test
 all: $(tests)
 
 config_test: config_test.cc ../pocket-client/model/config.cc
-	g++ config_test.cc ../pocket-client/model/config.cc -I../pocket-client/model/ -std=c++11 -o config_test
+	g++ config_test.cc ../pocket-client/model/config.cc -I../pocket-client/model/ $(CXXFLAGS) -o config_test
 
 config_change_test: config_change_test.cc ../pocket-client/model/config.cc
-	g++ config_change_test.cc ../pocket-client/model/config.cc -I../pocket-client/model/ -std=c++11 -o config_change_test
+	g++ config_change_test.cc ../pocket-client/model/config.cc -I../pocket-client/model/ $(CXXFLAGS) -o config_change_test
 	
 .PHONY: examples
 examples:

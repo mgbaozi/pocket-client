@@ -1,0 +1,7 @@
+*.o
+*.swp
+*.a
+build/*
+*_test
+!*_test.*
+test/*.json

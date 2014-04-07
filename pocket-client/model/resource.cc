@@ -1,16 +1,61 @@
 #include "resource.h"
-#include "config.h"
+#include "resdata.h"
+#include <lodepng.h>
+#include <sstream>
+#include <fstream>
+#include <assert.h>
 
 using namespace pocket;
 using namespace pocket::model;
 
 Resource::Resource()
+	:res_data_(new ResourceData)
 {
-	Config& config = Config::instance();
-	const auto& res_config = config.get_config("resource");
-	resource_path_ = res_config.get<string>("path");
 }
 
 Resource::~Resource()
 {
 }
+
+bool Resource::load_image(uint32_t id, const std::string& filename)
+{
+	ImagePtr image(new Image);
+	unsigned int error = lodepng::decode(image->data, image->width, image->height, filename);	
+	if(error)
+	{
+		return false;
+	}
+	images_.insert(ImageMap::value_type(id, image));
+	return true;
+}
+
+bool Resource::load_sound(uint32_t id, const std::string& filename)
+{
+
+	return true;
+}
+
+bool Resource::load_animation(uint32_t id, const std::string& filename)
+{
+
+	return true;
+}
+
+ImagePtr Resource::get_image(uint32_t id)
+{
+	ImageMap::iterator iter = images_.find(id);
+	if(iter != images_.end())
+	{
+		ImagePtr image = iter -> second;
+		if(image.get() != nullptr)
+		{
+			return image;
+		}
+	}
+	if(load_image(id, res_data_ -> get_image_path(id)))
+	{
+		return images_[id];
+	}
+	return ImagePtr(nullptr);
+}
+

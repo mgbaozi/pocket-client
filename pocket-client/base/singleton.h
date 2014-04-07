@@ -6,9 +6,6 @@
 namespace pocket
 {
 
-namespace base
-{
-
 template<typename T>
 class Singleton : boost::noncopyable
 {
@@ -41,8 +38,6 @@ pthread_once_t Singleton<T>::ponce_ = PTHREAD_ONCE_INIT;
 
 template<typename T>
 T* Singleton<T>::value_ = NULL;
-
-} //namespace base
 
 } //namespace pocket
 #endif

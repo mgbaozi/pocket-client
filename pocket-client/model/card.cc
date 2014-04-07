@@ -9,7 +9,7 @@ Card::Card(unsigned int id)
 }
 
 Card::Card(const Card& card)
-	:id_(card._id)
+	:id_(card.id_)
 {
 
 }

@@ -1,0 +1,9 @@
+{
+	"image": [
+		{"id": 1, "path": "image/card", "filename": "test.png"}
+	],
+	"sound": [
+	],
+	"animation": [
+	]
+}

@@ -3,5 +3,8 @@
 *.a
 build/*
 *_test
-!*_test.*
+!*_test.h
+!*_test.cc
 test/*.json
+.DS_Store
+test/data

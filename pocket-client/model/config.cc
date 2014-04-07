@@ -39,7 +39,7 @@ void Config::init()
 	read_json(ss, config_);
 }
 
-ptree& Config::get_config(const std::string& key)
+const ptree& Config::get_config(const std::string& key) const
 {
 	return config_.get_child(key);
 }

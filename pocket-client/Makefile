@@ -5,12 +5,12 @@ model:
 	$(MAKE) -C model
 
 main: pocket-client.cc
-	g++ pocket-client.cc $(CXXFLAGS) -o ../build/debug/pocket-client
+	$(CXX) pocket-client.cc $(CXXFLAGS) $(LDFLAGS) -o $(BUILD_PATH)/pocket-client
 
 run: all
-	../build/debug/pocket-client
+	$(BUILD_PATH)/pocket-client
 
 .PHONY: clean
 clean:
 	$(CLEAN) -C model
-	rm -f ../build/debug/pocket-client
+	rm -f $(BUILD_PATH)/pocket-client

@@ -16,13 +16,13 @@ class Config : boost::noncopyable
 public:
 	static Config& instance()
 	{
-		return base::Singleton<Config>::instance();
+		return Singleton<Config>::instance();
 	}
 	inline void reload()
 	{
 		init();
 	}
-	boost::property_tree::ptree& get_config(const std::string& key);
+	const boost::property_tree::ptree& get_config(const std::string& key) const;
 	void set_config(const std::string& key, const boost::property_tree::ptree& value);
 	static void set_config_file(const std::string& file)
 	{
@@ -35,7 +35,7 @@ private:
 	boost::property_tree::ptree config_;
 	static std::string config_file_;
 
-friend class base::Singleton<Config>;
+friend class Singleton<Config>;
 };
 
 } //namespace model

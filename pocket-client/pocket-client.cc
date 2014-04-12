@@ -1,4 +1,11 @@
-int main()
+#include<QtGui/QApplication>
+#include "QtGLWindow.h"
+int main(int argc, char *argv[])
 {
-	return 0;
+	QApplication app(argc, argv);
+	QtGLWindow window;
+	window.setWindowTitle(QObject::tr("Pocket Client"));
+	window.resize(1366, 768);
+	window.show();
+	return app.exec();
 }

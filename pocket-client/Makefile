@@ -1,16 +1,27 @@
+ifeq ($(shell uname), Darwin)
+RUN_CMD = open $(BUILD_PATH)/pocket-client.app
+else
+RUN_CMD = $(BUILD_PATH)/pocket-client
+endif
+
 all: model main
 
 .PHONY: model
 model:
 	$(MAKE) -C model
 
-main: PocketClient.cc
-	$(CXX) PocketClient.cc $(CXXFLAGS) $(LDFLAGS) -o $(BUILD_PATH)/PocketClient
+QtMakefile: pocket-client.pro
+	qmake -o QtMakefile
 
-run: all
-	$(BUILD_PATH)/PocketClient
+main: QtMakefile
+	$(MAKE) -f QtMakefile
+
+.PHONY: run
+run:
+	$(RUN_CMD)
 
 .PHONY: clean
 clean:
+	$(MAKE) -f QtMakefile clean
 	$(CLEAN) -C model
 	rm -f $(BUILD_PATH)/PocketClient

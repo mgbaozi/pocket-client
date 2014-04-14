@@ -12,7 +12,7 @@ namespace view
 class ViewObject
 {
 public:
-	ViewObject();
+	ViewObject(ObjectState state);
 	virtual ~ViewObject();
 
 public: //getter

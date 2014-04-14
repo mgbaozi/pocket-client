@@ -8,3 +8,7 @@ build/*
 test/*.json
 .DS_Store
 test/data
+QtMakefile
+moc_*
+pocket-client/data
+*.app

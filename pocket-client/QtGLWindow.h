@@ -13,6 +13,7 @@ namespace view
 }
 class QtGLWindow : public QGLWidget
 {
+	Q_OBJECT
 public:
 	QtGLWindow(QWidget *parents = 0);
 	~QtGLWindow();
@@ -23,10 +24,10 @@ private:
 	virtual void paintGL();
 
 private:
-	boost::scoped_ptr<Scene> scene_;
-	GraphicsAdapter &graphic_;
+	boost::scoped_ptr<view::Scene> scene_;
+	view::GraphicsAdapter &graphic_;
 	boost::scoped_ptr<QTimer> paint_timer_;
-}
-
+};
 } // namespace pocket
+
 #endif

@@ -19,8 +19,8 @@ private:
 	void init();
 
 private:
-	model::Card& card_;
-	model::Reource& resource_;
+	const model::Card& card_;
+	model::Resource& resource_;
 
 };
 } // namespace view

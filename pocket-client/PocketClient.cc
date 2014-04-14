@@ -3,7 +3,7 @@
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
-	QtGLWindow window;
+	pocket::QtGLWindow window;
 	window.setWindowTitle(QObject::tr("Pocket Client"));
 	window.resize(1366, 768);
 	window.show();

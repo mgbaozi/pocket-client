@@ -2,6 +2,8 @@
 #define POCKET_BASE_TYPE_H
 #include <vector>
 #include <functional>
+#include <memory>
+#include <stdint.h>
 namespace pocket
 {
 struct Image

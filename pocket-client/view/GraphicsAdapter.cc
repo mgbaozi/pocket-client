@@ -1,4 +1,5 @@
 #include "GraphicsAdapter.h"
+#include "ViewObject.h"
 
 using namespace pocket;
 using namespace view;
@@ -16,7 +17,7 @@ GraphicsAdapter::~GraphicsAdapter()
 void GraphicsAdapter::display(ObjectList& objects)
 {
 	clear();
-	for(auto iter = objects.begin(); iter != iter.end(); ++iter)
+	for(auto iter = objects.rbegin(); iter != objects.rend(); ++iter)
 	{
 		display_object(*iter);
 	}

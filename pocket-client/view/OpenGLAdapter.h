@@ -10,7 +10,7 @@ namespace view
 {
 
 class ViewObject;
-class ImageObject;
+struct ImageObject;
 class OpenGLAdapter : public GraphicsAdapter
 {
 public:
@@ -26,15 +26,17 @@ public:
 
 private:
 	OpenGLAdapter();
-	~OpenGLAdapter();
+	virtual ~OpenGLAdapter();
 private:
 	virtual void init();
 	void bind_texture(ImageObject& object);
 
 private:
-	paint_image(float x, float y, float width, float height, float angle, float c_x, float c_y,  uint32_t id);
+	void paint_image(float x, float y, float width, float height, float angle, float c_x, float c_y,  uint32_t id);
 
-}
+friend class Singleton<OpenGLAdapter>;
+
+};
 
 } // namespace view
 } // namespace pocket

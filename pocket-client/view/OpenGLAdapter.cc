@@ -1,7 +1,8 @@
 #include "OpenGLAdapter.h"
 #include "ViewObject.h"
-#include "ObjectState.h"
+#include "ObjectTypes.h"
 #include <math.h>
+#include "../glHeader.h"
 using namespace pocket;
 using namespace view;
 
@@ -19,7 +20,7 @@ static inline float gl_width(float width)
 }
 static inline float gl_height(float height)
 {
-	return -height * 2
+	return -height * 2;
 }
 OpenGLAdapter::OpenGLAdapter()
 	:GraphicsAdapter()
@@ -50,15 +51,16 @@ void OpenGLAdapter::clear()
 void OpenGLAdapter::display_object(ViewObject& object)
 {
 	auto& display_list = object.get_display_list();
-	for(auto iter = display_list.begin(); iter != display_list.end(); ++iter)
+	for(auto iter = display_list.rbegin(); iter != display_list.rend(); ++iter)
 	{
 		if(iter -> id == 0)
 		{
 			bind_texture(*iter);
 		}
 		const auto& state = object.get_state();
-		paint_image(state.pos_x + iter->pos_x, state.pos_y + iter->pos_y, iter->width, iter->height, state.angle,
-					state.pos_x + state.width/2, state.pos_y + state.height/2, iter->id);
+		paint_image(gl_x(state.pos_x+state.width*iter->pos_x), gl_y(state.pos_y+state.height*iter->pos_y),
+				gl_width(state.width*iter->width), gl_height(state.height*iter->height), state.angle,
+					gl_x(state.pos_x + state.width/2), gl_y(state.pos_y + state.height/2), iter->id);
 
 	}
 
@@ -78,7 +80,7 @@ void OpenGLAdapter::bind_texture(ImageObject& object)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-	auto& image = objcet.image;
+	auto& image = object.image;
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->width,
 									image->height, 0, GL_RGBA,
 									GL_UNSIGNED_BYTE, &image->data[0]);

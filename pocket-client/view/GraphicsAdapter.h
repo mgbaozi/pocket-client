@@ -2,7 +2,7 @@
 #define POCKET_VIEW_GRAPHICS_ADAPTER_H
 #include <boost/noncopyable.hpp>
 #include "../base/types.h"
-#include <vector>
+#include "ObjectTypes.h"
 namespace pocket
 {
 
@@ -13,7 +13,7 @@ class GraphicsAdapter : boost::noncopyable
 {
 public:
 	GraphicsAdapter();
-	~GraphicsAdapter();
+	virtual ~GraphicsAdapter();
 	void display(ObjectList& objects);
 	virtual void clear() = 0;
 	virtual void display_object(ViewObject& object) = 0;

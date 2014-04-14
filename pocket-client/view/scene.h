@@ -24,7 +24,7 @@ public:
 
 private:
 	ObjectList object_list_;
-}
+};
 
 } //namespace view
 

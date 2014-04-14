@@ -27,11 +27,16 @@ HEADERS += \
 			view/CardObject.h \
 			view/scene.h
 
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++11 -stdlib=libc++
 QMAKE_LFLAGS += -L../lib
 INCLUDEPATH += ../include
 FORMS += \
 
+macx {
+	QMAKE_CXXFLAGS += -stdlib=libc++ -I/usr/local/opt/qt5/include -I/usr/local/include
+	QMAKE_LFLAGS += -L/usr/local/opt/qt5/lib -stdlib=libc++
+	
+}
 LIBS += -llodepng
 QT += opengl
 CONFIG += qt debug

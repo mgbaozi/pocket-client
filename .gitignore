@@ -12,3 +12,5 @@ QtMakefile
 moc_*
 pocket-client/data
 *.app
+pocket-client/config.json
+pocket-client

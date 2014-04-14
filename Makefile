@@ -6,8 +6,8 @@ export CUR_DIR = $(shell pwd)
 export DEBUG = TRUE
 export INCLUDE_PATH = ${CUR_DIR}/include
 export LD_PATH = ${CUR_DIR}/lib
-export CXXFLAGS = -I${INCLUDE_PATH} -std=c++11
-export LDFLAGS = -L${LD_PATH} -llodepng
+export CXXFLAGS = -I${INCLUDE_PATH} -m64 -pipe -std=c++11 -g -D_REENTRANT -Wall -W -fPIE
+export LDFLAGS = -L${LD_PATH} -llodepng -m64 -lpthread
 ifeq ($(DEBUG), TRUE)
 export BUILD_PATH = ${CUR_DIR}/build/debug
 else

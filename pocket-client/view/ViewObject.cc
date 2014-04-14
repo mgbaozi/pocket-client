@@ -1,4 +1,4 @@
-#include "viewobject.h"
+#include "ViewObject.h"
 #include <math.h>
 
 using namespace pocket;

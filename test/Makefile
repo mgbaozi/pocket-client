@@ -3,7 +3,7 @@ tests = config_test resource_test
 all: $(tests)
 
 config_test: config_test.cc ../pocket-client/model/config.cc
-	$(CXX) config_test.cc ../pocket-client/model/config.cc -I../pocket-client/model/ $(CXXFLAGS) -o config_test
+	$(CXX) config_test.cc ../pocket-client/model/config.cc -I../pocket-client/model/ $(CXXFLAGS) $(LDFLAGS) -o config_test
 
 resource_test: resource_test.cc ../pocket-client/model/*.cc
 	$(CXX) resource_test.cc ../pocket-client/model/*.cc -I ../pocket-client/model -I ../pocket-client/base $(CXXFLAGS) $(LDFLAGS) -o resource_test

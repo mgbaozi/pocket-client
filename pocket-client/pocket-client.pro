@@ -27,7 +27,7 @@ HEADERS += \
 			view/CardObject.h \
 			view/scene.h
 
-QMAKE_CXXFLAGS += -std=c++11 -stdlib=libc++
+QMAKE_CXXFLAGS += -std=c++11
 QMAKE_LFLAGS += -L../lib
 INCLUDEPATH += ../include
 FORMS += \
